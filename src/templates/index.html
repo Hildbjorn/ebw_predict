@@ -1,0 +1,117 @@
+<!doctype html>
+<!--
+Автор: Артем Фомин
+Компания: Stratman.pro
+Дата создания: 15 октября 2023 г.
+ -->
+
+<html lang="ru">
+<head>
+
+    <!-- Кодировка символов -->
+    <meta charset="utf-8">
+
+    <!-- Параметры отображения страницы на мобильных устройствах -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link href="src/css/style.css" rel="stylesheet">
+
+    <!-- Заголовок страницы -->
+    <title>EBW Prediction</title>
+
+    <!-- Favicon -->
+    <!--
+    <link rel="apple-touch-icon" sizes="180x180" href="URL_для_иконки_в_размере_180x180">
+    <link rel="icon" type="image/png" sizes="32x32" href="URL_для_иконки_в_размере_32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="URL_для_иконки_в_размере_16x16">
+    <link rel="manifest" href="URL_для_файла_манифеста_для_приложения">
+    <link rel="mask-icon" href="URL_для_иконки_для_закрепленной_вкладки_в_Safari" color="#цвет_иконки">
+    <link rel="shortcut icon" href="URL_для_иконки_для_сокращения_ссылки">
+    <meta name="msapplication-TileColor" content="#цвет_плитки_MS">
+    <meta name="msapplication-config" content="URL_для_файла_конфигурации_MS">
+    <meta name="theme-color" content="#цвет_темы">
+    -->
+
+    <!-- META TAGS (меняются в подключаемых страницах) -->
+    <!-- Основные -->
+    <meta name="description" content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения"><!-- краткое описание сайта -->
+    <meta name="keywords" content="электронно, лучевая, сварка, тонкостенные, конструкции"><!-- ключевые слова, связанные с сайтом (устарело, но на всякий случай) -->
+    <meta name="robots" content="index,follow"><!-- инструкции для поисковых роботов -->
+    <link rel="canonical" href="https://ebw-predict.ru/"><!-- канонический	URL сайта -->
+
+    <!-- Для Фейсбука, ВКонтакте, Одноклассников и Гуглплюса -->
+    <meta property="og:type" content="website"><!-- тип контента -->
+    <meta property="og:site_name" content="EBW Prediction"><!-- название сайта -->
+    <meta property="og:title" content="EBW Prediction"><!-- заголовок страницы -->
+    <meta property="og:description" content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения"><!-- описание страницы -->
+    <meta property="og:url" content="https://ebw-predict.ru/"><!-- URL страницы -->
+    <meta property="og:locale" content="ru_RU"/><!-- языковая локаль -->
+
+    <!-- Для Твиттера и Вконтакта -->
+    <meta name="twitter:card" content="summary_large_image"><!-- тип карточки -->
+    <meta name="twitter:title" content="EBW Prediction"><!-- заголовок страницы -->
+    <meta name="twitter:description" content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения"><!-- описание страницы -->
+    <meta name="twitter:image:src" content="src/img/logo.png"><!-- URL картинки -->
+    <meta name="twitter:url" content="https://ebw-predict.ru/"><!-- URL страницы -->
+    <meta name="twitter:domain" content="EBW Prediction"><!-- название сайта -->
+    <meta name="twitter:site" content="EBW Prediction"><!-- название сайта -->
+    <meta name="twitter:creator" content="@Артем Фомин"><!-- имя автора -->
+
+    <!-- Для Гуглплюса -->
+    <meta itemprop="name" content="EBW Prediction"><!-- заголовок страницы -->
+    <meta itemprop="description" content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения"><!-- описание страницы -->
+    <meta itemprop="image" content="src/img/logo.png"><!-- URL картинки -->
+
+</head>
+<body>
+<!-- Главное меню сайта -->
+<header>
+    <img src="src/img/logo.webp" alt="Лого">
+</header>
+<!-- Основной контент страницы -->
+<main class="main">
+    <h1>EBW Prediction</h1>
+
+    <form action="{{url_for('main')}}" method="POST">
+        <fieldset>
+            <legend>
+                Введите данные
+            </legend>
+            <input name="iw" type="number" required>
+            <br>
+            <input name="if" type="number" required>
+            <br>
+            <input name="vw" type="number" required>
+            <br>
+            <input name="fp" type="number" required>
+            <br>
+            <input type="submit"> 
+        </fieldset>
+    </form>
+
+    <div class="result">
+        {% if result %}
+        <p>{{result}}</p>
+        {% endif %}
+    </div>
+
+</main>
+<!-- Подвал страницы -->
+<footer class="footer container-fluid shadow-sm">
+    <!-- Копирайт -->
+    <div class="container text-start">
+        <div class="copyright">
+            <span>Автор: Артем Фомин</span>
+        </div>
+    </div>
+</footer>
+<!-- Включение Popper везде -->
+<script>
+    let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    });
+</script>
+</body>
+</html>
