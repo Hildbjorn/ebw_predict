@@ -6,6 +6,7 @@
  -->
 
 <html lang="ru">
+
 <head>
 
     <!-- Кодировка символов -->
@@ -35,8 +36,11 @@
 
     <!-- META TAGS (меняются в подключаемых страницах) -->
     <!-- Основные -->
-    <meta name="description" content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения"><!-- краткое описание сайта -->
-    <meta name="keywords" content="электронно, лучевая, сварка, тонкостенные, конструкции"><!-- ключевые слова, связанные с сайтом (устарело, но на всякий случай) -->
+    <meta name="description"
+        content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения">
+    <!-- краткое описание сайта -->
+    <meta name="keywords" content="электронно, лучевая, сварка, тонкостенные, конструкции">
+    <!-- ключевые слова, связанные с сайтом (устарело, но на всякий случай) -->
     <meta name="robots" content="index,follow"><!-- инструкции для поисковых роботов -->
     <link rel="canonical" href="https://ebw-predict.ru/"><!-- канонический	URL сайта -->
 
@@ -44,14 +48,18 @@
     <meta property="og:type" content="website"><!-- тип контента -->
     <meta property="og:site_name" content="EBW Prediction"><!-- название сайта -->
     <meta property="og:title" content="EBW Prediction"><!-- заголовок страницы -->
-    <meta property="og:description" content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения"><!-- описание страницы -->
+    <meta property="og:description"
+        content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения">
+    <!-- описание страницы -->
     <meta property="og:url" content="https://ebw-predict.ru/"><!-- URL страницы -->
-    <meta property="og:locale" content="ru_RU"/><!-- языковая локаль -->
+    <meta property="og:locale" content="ru_RU" /><!-- языковая локаль -->
 
     <!-- Для Твиттера и Вконтакта -->
     <meta name="twitter:card" content="summary_large_image"><!-- тип карточки -->
     <meta name="twitter:title" content="EBW Prediction"><!-- заголовок страницы -->
-    <meta name="twitter:description" content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения"><!-- описание страницы -->
+    <meta name="twitter:description"
+        content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения">
+    <!-- описание страницы -->
     <meta name="twitter:image:src" content="src/img/logo.png"><!-- URL картинки -->
     <meta name="twitter:url" content="https://ebw-predict.ru/"><!-- URL страницы -->
     <meta name="twitter:domain" content="EBW Prediction"><!-- название сайта -->
@@ -60,58 +68,69 @@
 
     <!-- Для Гуглплюса -->
     <meta itemprop="name" content="EBW Prediction"><!-- заголовок страницы -->
-    <meta itemprop="description" content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения"><!-- описание страницы -->
+    <meta itemprop="description"
+        content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения">
+    <!-- описание страницы -->
     <meta itemprop="image" content="src/img/logo.png"><!-- URL картинки -->
 
 </head>
+
 <body>
-<!-- Главное меню сайта -->
-<header>
-    <img src="src/img/logo.webp" alt="Лого">
-</header>
-<!-- Основной контент страницы -->
-<main class="main">
-    <h1>EBW Prediction</h1>
+    <!-- Главное меню сайта -->
+    <header>
+        <img src="src/img/logo.webp" alt="Лого">
+    </header>
+    <!-- Основной контент страницы -->
+    <main class="main">
+        <h1>EBW Prediction</h1>
 
-    <form action="{{url_for('main')}}" method="POST">
-        <fieldset>
-            <legend>
-                Введите данные
-            </legend>
-            <input name="iw" type="number" required>
-            <br>
-            <input name="if" type="number" required>
-            <br>
-            <input name="vw" type="number" required>
-            <br>
-            <input name="fp" type="number" required>
-            <br>
-            <input type="submit"> 
-        </fieldset>
-    </form>
-
-    <div class="result">
-        {% if result %}
-        <p>{{result}}</p>
-        {% endif %}
-    </div>
-
-</main>
-<!-- Подвал страницы -->
-<footer class="footer container-fluid shadow-sm">
-    <!-- Копирайт -->
-    <div class="container text-start">
-        <div class="copyright">
-            <span>Автор: Артем Фомин</span>
+        <div>
+            {% if depth and width %}
+            <h3>При параметрах:</h3>
+            <p>Величина сварочного тока (IW): {{ iw }} А</p>
+            <p>Величина тока фокусировки электронного пучка (IF): {{ if }} А</p>
+            <p>Скорость сварки (VW): {{ vw }} мм/с</p>
+            <p>Расстояние от поверхности образцов до электронно-оптической системы (FP): {{ fp }} мм</p>
+            <hr>
+            <p>Глубина шва: {{ depth }} мм</p>
+            <p>Ширина шва: {{ width }} мм</p>
+            {% endif %}
         </div>
-    </div>
-</footer>
-<!-- Включение Popper везде -->
-<script>
-    let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-    let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl)
-    });
-</script>
+
+        <form action="{{url_for('main')}}" method="POST">
+            <fieldset>
+                <legend>
+                    Введите данные
+                </legend>
+                <input name="iw" type="number" step="0.01" required> (например, 48)
+                <br>
+                <input name="if" type="number" step="0.01" required> (например, 131)
+                <br>
+                <input name="vw" type="number" step="0.01" required> (например, 10)
+                <br>
+                <input name="fp" type="number" step="0.01" required> (например, 125)
+                <br>
+                <input type="submit">
+            </fieldset>
+        </form>
+
+    </main>
+    <!-- Подвал страницы -->
+    <footer class="footer container-fluid shadow-sm">
+        <!-- Копирайт -->
+        <div class="container text-start">
+            <div class="copyright">
+                <span>Автор: Артем Фомин</span>
+            </div>
+        </div>
+    </footer>
+    <!-- Включение Popper везде -->
+    <script>
+        let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        });
+    </script>
 </body>
+
 </html>
