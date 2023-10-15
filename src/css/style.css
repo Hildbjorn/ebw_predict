@@ -1,0 +1,416 @@
+/* Импорт блоков */
+@import "bootstrap.css";
+
+/* Обнуление стилей
+========================================================================== */
+
+/**Исправление высоты строки во всех браузерах.
+Предотвращение изменения размера шрифта после изменения ориентации в iOS.
+*/
+html {
+    line-height: 1.15;
+    /* 1 /
+   -webkit-text-size-adjust: 100%; / 2 */
+}
+
+/* Секции
+========================================================================== */
+
+/**Удаление отступа во всех браузерах.
+*/
+body {
+    margin: 0;
+}
+
+/**Отображение элемента main одинаково в IE.
+*/
+main {
+    display: block;
+}
+
+/**Исправление размера шрифта и отступа у элементов h1 в контексте section и article в Chrome, Firefox и Safari.
+*/
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    font-weight: 700 !important;
+}
+
+/* Группировка контента
+========================================================================== */
+
+/**Добавление правильной модели бокса в Firefox.
+Отображение переполнения в Edge и IE.
+*/
+hr {
+    box-sizing: content-box;
+    /* 1 /
+   height: 0; / 1 /
+   overflow: visible; / 2 */
+}
+
+/**Исправление наследования и масштабирования размера шрифта во всех браузерах.
+Исправление странного размера шрифта em во всех браузерах.
+*/
+pre {
+    font-family: monospace, monospace;
+    /* 1 /
+   font-size: 1em; / 2 */
+}
+
+/* Семантика текста
+========================================================================== */
+
+/**Удаление серого фона активных ссылок в IE 10.
+*/
+a {
+    background-color: transparent;
+    text-decoration: none;
+!important;
+}
+
+/**Удаление нижней границы в Chrome 57-
+Добавление правильного оформления текста в Chrome, Edge, IE, Opera и Safari.
+*/
+abbr[title] {
+    border-bottom: none;
+    /* 1 /
+   text-decoration: underline; / 2 /
+   text-decoration: underline dotted; / 2 */
+}
+
+/**Добавление правильного веса шрифта в Chrome, Edge и Safari.
+*/
+b,
+strong {
+    font-weight: bolder;
+}
+
+/**Исправление наследования и масштабирования размера шрифта во всех браузерах.
+Исправление странного размера шрифта em во всех браузерах.
+*/
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    /* 1 /
+   font-size: 1em; / 2 */
+}
+
+/**Добавление правильного размера шрифта во всех браузерах.
+*/
+small {
+    font-size: 80%;
+}
+
+/**Запрет sub и sup элементам влиять на высоту строки во всех браузерах.
+*/
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+/* Встроенный контент
+========================================================================== */
+
+/**Удаление границы на изображениях внутри ссылок в IE 10.
+*/
+img {
+    border-style: none;
+}
+
+/* Формы
+========================================================================== */
+
+/**Изменение стилей шрифта во всех браузерах.
+Удаление отступов в Firefox и Safari.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    /* 1 /
+   font-size: 100%; / 1 /
+   line-height: 1.15; / 1 /
+   margin: 0; / 2 */
+}
+
+/**Показ overflow в IE.
+Показ overflow в Edge.
+*/
+button,
+input { /* 1 */
+    overflow: visible;
+}
+
+/**Удаление наследования text-transform в Edge, Firefox и IE.
+Удаление наследования text-transform в Firefox.
+*/
+button,
+select { /* 1 */
+    text-transform: none;
+}
+
+/**Исправление невозможности стилизации кликабельных типов в iOS и Safari.
+*/
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+/**Удаление внутренней границы и отступов в Firefox.
+*/
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+/**Восстановление стилей фокуса, которые были сброшены предыдущим правилом.
+*/
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+/**Исправление padding в Firefox.
+*/
+fieldset {
+    padding: 0.35em 0.75em 0.625em;
+}
+
+/**Исправление переноса текста в Edge и IE.
+Исправление наследования цвета от элементов fieldset в IE.
+Удалеие padding, чтобы разработчики не забывали обнулять элементы fieldset во всех браузерах.
+*/
+legend {
+    box-sizing: border-box;
+    /* 1 /
+   color: inherit; / 2 /
+   display: table; / 1 /
+   max-width: 100%; / 1 /
+   padding: 0; / 3 /
+   white-space: normal; / 1 */
+}
+
+/**Добавление правильного вертикального выравнивания в Chrome, Firefox и Opera.
+*/
+progress {
+    vertical-align: baseline;
+}
+
+/**
+Удаление вертикальной полосы прокрутки по умолчанию в IE 10+.
+*/
+textarea {
+    overflow: auto;
+}
+
+/**
+Добавление правильного размера блока в IE 10.
+Удаление отступов в IE 10.
+*/
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    /* 1 /
+   padding: 0; / 2 */
+}
+
+/**
+Исправление стиля курсора кнопок инкремента и декремента в Chrome.
+*/
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+/**
+Исправление необычного вида в Chrome и Safari.
+Исправление стиля обводки в Safari.
+*/
+[type="search"] {
+    -webkit-appearance: textfield;
+    /* 1 /
+   outline-offset: -2px; / 2 */
+}
+
+/**
+Удаление внутреннего отступа в Chrome и Safari на macOS.
+*/
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+Исправление невозможности стилизации кликабельных типов в iOS и Safari.
+Изменение свойств шрифта на inherit в Safari.
+*/
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    /* 1 /
+   font: inherit; / 2 */
+}
+
+/* Интерактивность
+========================================================================== */
+
+/*
+
+Добавление правильного отображения в Edge, IE 10+ и Firefox.
+*/
+details {
+    display: block;
+}
+
+/*
+
+Добавление правильного отображения во всех браузерах.
+*/
+summary {
+    display: list-item;
+}
+
+/* Разное
+========================================================================== */
+
+/**
+Добавление правильного отображения в IE 10+.
+*/
+template {
+    display: none;
+}
+
+/**
+Добавление правильного отображения в IE 10.
+*/
+[hidden] {
+    display: none;
+}
+
+/* Конец блока обнуления стилей
+========================================================================== */
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Robotoflex", sans-serif;
+    color: #f6b874;
+    background: radial-gradient(#2c2c2c, #000000);
+    /*background-color: rgba(255, 255, 255, 0.75);*/
+    /* background-color: rgba(27, 54, 93, 0.5); */
+}
+
+.glass {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    border: 1px solid #2c2c2c;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+}
+
+.glass:before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 0 2000px rgba(0, 0, 0, .5);
+    filter: blur(10px);
+    margin: -20px;
+}
+
+header {
+    flex: 0 0 auto;
+}
+
+.logo img{
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+.table {
+    color: #f6b874;
+    vertical-align: middle;
+    width: auto !important;
+}
+
+.icon{
+    max-width: 100px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+}
+
+.mini_icon {
+    max-width: 30px;
+    max-height: 30px;
+    width: auto;
+    height: auto;
+}
+
+.values {
+    font-size: 150%;
+    font-weight: 700;
+}
+
+.form-floating {
+    color: #000000 !important;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+    background-color: var(--bs-primary-smp);
+    flex: 0 0 auto;
+}
+
+/* Шрифт Robotoflex
+========================================================================== */
+@font-face {
+    font-family: "Robotoflex";
+    src: url("src/fonts/robotoflex.ttf") format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}

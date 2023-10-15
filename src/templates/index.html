@@ -19,7 +19,7 @@
     <link href="src/css/style.css" rel="stylesheet">
 
     <!-- Заголовок страницы -->
-    <title>EBW Prediction</title>
+    <title>EBW Predictor</title>
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/src/img/favicons/apple-touch-icon.png">
@@ -28,8 +28,8 @@
     <link rel="manifest" href="/src/img/favicons/site.webmanifest">
     <link rel="mask-icon" href="/src/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="/src/img/favicons/favicon.ico">
-    <meta name="apple-mobile-web-app-title" content="EBW Prediction">
-    <meta name="application-name" content="EBW Prediction">
+    <meta name="apple-mobile-web-app-title" content="EBW Predictor">
+    <meta name="application-name" content="EBW Predictor">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-config" content="/src/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
@@ -46,8 +46,8 @@
 
     <!-- Для Фейсбука, ВКонтакте, Одноклассников и Гуглплюса -->
     <meta property="og:type" content="website"><!-- тип контента -->
-    <meta property="og:site_name" content="EBW Prediction"><!-- название сайта -->
-    <meta property="og:title" content="EBW Prediction"><!-- заголовок страницы -->
+    <meta property="og:site_name" content="EBW Predictor"><!-- название сайта -->
+    <meta property="og:title" content="EBW Predictor"><!-- заголовок страницы -->
     <meta property="og:description"
         content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения">
     <!-- описание страницы -->
@@ -56,18 +56,18 @@
 
     <!-- Для Твиттера и Вконтакта -->
     <meta name="twitter:card" content="summary_large_image"><!-- тип карточки -->
-    <meta name="twitter:title" content="EBW Prediction"><!-- заголовок страницы -->
+    <meta name="twitter:title" content="EBW Predictor"><!-- заголовок страницы -->
     <meta name="twitter:description"
         content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения">
     <!-- описание страницы -->
     <meta name="twitter:image:src" content="src/img/logo.png"><!-- URL картинки -->
     <meta name="twitter:url" content="https://ebw-predict.ru/"><!-- URL страницы -->
-    <meta name="twitter:domain" content="EBW Prediction"><!-- название сайта -->
-    <meta name="twitter:site" content="EBW Prediction"><!-- название сайта -->
+    <meta name="twitter:domain" content="EBW Predictor"><!-- название сайта -->
+    <meta name="twitter:site" content="EBW Predictor"><!-- название сайта -->
     <meta name="twitter:creator" content="@Артем Фомин"><!-- имя автора -->
 
     <!-- Для Гуглплюса -->
-    <meta itemprop="name" content="EBW Prediction"><!-- заголовок страницы -->
+    <meta itemprop="name" content="EBW Predictor"><!-- заголовок страницы -->
     <meta itemprop="description"
         content="Приложение для прогнозирования размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения">
     <!-- описание страницы -->
@@ -78,41 +78,132 @@
 <body>
     <!-- Главное меню сайта -->
     <header>
-        <img src="src/img/logo.webp" alt="Лого">
+        <div class="container">
+            <div class="row align-items-center mt-5">
+                <div class="logo col-12 col-md-4 col-lg-3 text-center text-md-start">
+                    <img src="src/img/logo.webp" alt="Лого">
+                </div>
+                <div class="col-12 col-md-8 col-lg-9 text-center text-md-start">
+                    <h1 class="title mt-3">EBW Predictor</h1>
+                    <p class="title mt-0">Приложение для прогнозирования размеров сварного шва при электронно-лучевой
+                        сварке тонкостенных конструкций аэрокосмического назначения</p>
+                </div>
+            </div>
+        </div>
     </header>
     <!-- Основной контент страницы -->
     <main class="main">
-        <h1>EBW Prediction</h1>
+        {% if depth and width %}
+        <div class="container glass mt-5 p-3 p-md-5">
+            <h3>Получены результаты:</h3>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row"><img class="icon" src="src/img/icons/debth.webp" alt="Debth"></th>
+                        <td>Глубина шва</td>
+                        <td class="values">{{ depth }}</td>
+                        <td>мм</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><img class="icon" src="src/img/icons/width.webp" alt="Width"></th>
+                        <td>Ширина шва</td>
+                        <td class="values">{{ width }}</td>
+                        <td>мм</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <div>
-            {% if depth and width %}
-            <h3>При параметрах:</h3>
-            <p>Величина сварочного тока (IW): {{ iw }} А</p>
-            <p>Величина тока фокусировки электронного пучка (IF): {{ if }} А</p>
-            <p>Скорость сварки (VW): {{ vw }} мм/с</p>
-            <p>Расстояние от поверхности образцов до электронно-оптической системы (FP): {{ fp }} мм</p>
-            <hr>
-            <p>Глубина шва: {{ depth }} мм</p>
-            <p>Ширина шва: {{ width }} мм</p>
-            {% endif %}
+            <h3 class="border-0">При параметрах:</h3>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Величина сварочного тока</td>
+                        <td>(<b>IW</b>)</td>
+                        <td>{{ iw }}</td>
+                        <td>А</td>
+                    </tr>
+                    <tr>
+                        <td>Величина тока фокусировки электронного пучка</td>
+                        <td>(<b>IF</b>)</td>
+                        <td>{{ if }}</td>
+                        <td>А</td>
+                    </tr>
+                    <tr>
+                        <td>Скорость сварки</td>
+                        <td>(<b>VW</b>)</td>
+                        <td>{{ vw }}</td>
+                        <td class="text-nowrap">мм/с</td>
+                    </tr>
+                    <tr>
+                        <td>Расстояние от&nbsp;поверхности образцов до&nbsp;электронно-оптической системы</td>
+                        <td>(<b>FP</b>)</td>
+                        <td>{{ fp }}</td>
+                        <td>мм</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        {% endif %}
 
-        <form action="{{url_for('main')}}" method="POST">
-            <fieldset>
-                <legend>
-                    Введите данные
-                </legend>
-                <input name="iw" type="number" step="0.01" required> (например, 48)
-                <br>
-                <input name="if" type="number" step="0.01" required> (например, 131)
-                <br>
-                <input name="vw" type="number" step="0.01" required> (например, 10)
-                <br>
-                <input name="fp" type="number" step="0.01" required> (например, 125)
-                <br>
-                <input type="submit">
-            </fieldset>
-        </form>
+        <div class="container glass my-5 p-3 p-md-5">
+            <h2>Введите исходные параметры</h2>
+            <form action="{{url_for('main')}}" method="POST">
+                <div class="row d-flex align-items-center">
+                    <div class="col-2 text-center mt-3">
+                        <img class="mini_icon" src="src/img/icons/current.webp" alt="Debth">
+                    </div>
+                    <div class="col-8">
+                        <div class="form-floating mt-3">
+                            <input type="number" class="form-control" name="iw" id="iw" placeholder="48.0">
+                            <label for="iw">Сварочный ток (IW)</label>
+                        </div>
+                    </div>
+                    <div class="col-2 align-middle mt-3">А</div>
+                </div>
+
+                <div class="row d-flex align-items-center">
+                    <div class="col-2 text-center mt-3">
+                        <img class="mini_icon" src="src/img/icons/focus_current.webp" alt="focus_current">
+                    </div>
+                    <div class="col-8">
+                        <div class="form-floating mt-3">
+                            <input type="number" class="form-control" name="if" id="if" placeholder="48.0">
+                            <label for="if">Тока фокусировки (IF)</label>
+                        </div>
+                    </div>
+                    <div class="col-2 align-middle mt-3">А</div>
+                </div>
+
+                <div class="row d-flex align-items-center">
+                    <div class="col-2 text-center mt-3">
+                        <img class="mini_icon" src="src/img/icons/speed.webp" alt="speed">
+                    </div>
+                    <div class="col-8">
+                        <div class="form-floating mt-3">
+                            <input type="number" class="form-control" name="vw" id="vw" placeholder="48.0">
+                            <label for="vw">Скорость сварки (VW)</label>
+                        </div>
+                    </div>
+                    <div class="col-2 align-middle text-nowrap mt-3">мм/с</div>
+                </div>
+
+                <div class="row d-flex align-items-center ">
+                    <div class="col-2 text-center mt-3">
+                        <img class="mini_icon" src="src/img/icons/distance.webp" alt="distance">
+                    </div>
+                    <div class="col-8">
+                        <div class="form-floating mt-3">
+                            <input type="number" class="form-control" name="fp" id="fp" placeholder="48.0">
+                            <label for="fp">Расстояние (FP)</label>
+                        </div>
+                    </div>
+                    <div class="col-2 align-middle mt-3">мм</div>
+                </div>
+                <div class="w-100 text-center mt-5">
+                    <input type="submit" class="btn btn-lg btn-success">
+                </div>
+            </form>
+        </div>
 
     </main>
     <!-- Подвал страницы -->
@@ -124,6 +215,8 @@
             </div>
         </div>
     </footer>
+    <!-- Bootstrap в связке с Popper -->
+    <script src="src/js/bootstrap.bundle.js"></script>
     <!-- Включение Popper везде -->
     <script>
         let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
